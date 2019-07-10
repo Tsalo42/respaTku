@@ -99,7 +99,7 @@ class Reservation(ModifiableModel):
     end = models.DateTimeField(verbose_name=_('End time'))
     duration = pgfields.DateTimeRangeField(verbose_name=_('Length of reservation'), null=True,
                                            blank=True, db_index=True)
-    comments = models.TextField(null=True, blank=True, verbose_name=_('Comments'))
+    comments = models.TextField(null=True, max_length=1250, blank=True, verbose_name=_('Comments'))
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('User'), null=True,
                              blank=True, db_index=True, on_delete=models.PROTECT)
     state = models.CharField(max_length=16, choices=STATE_CHOICES, verbose_name=_('State'), default=CREATED)
@@ -114,12 +114,12 @@ class Reservation(ModifiableModel):
     # EXTRA FIELDS START HERE
 
     event_subject = models.CharField(max_length=200, verbose_name=_('Event subject'), blank=True)
-    event_description = models.TextField(verbose_name=_('Event description'), blank=True)
+    event_description = models.TextField(verbose_name=_('Event description'), max_length=1250, blank=True)
     number_of_participants = models.PositiveSmallIntegerField(verbose_name=_('Number of participants'), blank=True,
                                                               null=True)
     participants = models.TextField(verbose_name=_('Participants'), blank=True)
     host_name = models.CharField(verbose_name=_('Host name'), max_length=100, blank=True)
-    reservation_extra_questions = models.TextField(verbose_name=_('Reservation extra questions'), blank=True)
+    reservation_extra_questions = models.TextField(verbose_name=_('Reservation extra questions'), max_length=1250, blank=True)
 
     # extra detail fields for manually confirmed reservations
     reserver_name = models.CharField(verbose_name=_('Reserver name'), max_length=100, blank=True)

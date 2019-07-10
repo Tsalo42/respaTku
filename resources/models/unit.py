@@ -65,8 +65,7 @@ class Unit(ModifiableModel, AutoIdentifiedModel):
 
     picture_url = models.URLField(verbose_name=_('Picture URL'), max_length=200,
                                   null=True, blank=True)
-    picture_caption = models.CharField(verbose_name=_('Picture caption'), max_length=200,
-                                       null=True, blank=True)
+    picture_caption = models.CharField(blank=False, null=False, verbose_name=_('Picture caption'), max_length=200)
 
     reservable_max_days_in_advance = models.PositiveSmallIntegerField(verbose_name=_('Reservable max. days in advance'),
                                                                       null=True, blank=True)

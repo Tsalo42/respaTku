@@ -68,7 +68,7 @@ class NotificationTemplate(TranslatableModel):
 
     translations = TranslatedFields(
         short_message=models.TextField(
-            verbose_name=_('Short message'), blank=True, help_text=_('Short notification text for e.g. SMS messages')
+            verbose_name=_('Short message'), max_length=1250, blank=True, help_text=_('Short notification text for e.g. SMS messages')
         ),
         subject=models.CharField(
             verbose_name=_('Subject'), max_length=200, help_text=_('Subject for email notifications')

@@ -61,7 +61,7 @@ class CateringProduct(TimeStampedModel):
         CateringProductCategory, verbose_name=pgettext_lazy('catering', 'Category'), related_name='products',
         on_delete=models.CASCADE
     )
-    description = models.TextField(verbose_name=_('Description'), blank=True)
+    description = models.TextField(verbose_name=_('Description'), blank=True, max_length=1250)
 
     class Meta:
         verbose_name = _('Catering product')
@@ -91,8 +91,8 @@ class CateringOrder(TimeStampedModel):
     reservation = models.ForeignKey(
         Reservation, verbose_name=_('Reservation'), related_name='catering_orders', on_delete=models.CASCADE
     )
-    invoicing_data = models.TextField(verbose_name=_('Invoicing data'))
-    message = models.TextField(verbose_name=_('Message'), blank=True)
+    invoicing_data = models.TextField(verbose_name=_('Invoicing data'), max_length=1250)
+    message = models.TextField(verbose_name=_('Message'), blank=True, max_length=1250)
     serving_time = models.TimeField(verbose_name=_('Serving time'), blank=True, null=True)
 
     objects = CateringOrderQuerySet.as_manager()

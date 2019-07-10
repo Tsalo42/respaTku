@@ -143,9 +143,17 @@ class PeriodForm(forms.ModelForm):
 
 
 class ImageForm(forms.ModelForm):
+    caption_fi = forms.CharField(
+        required=True,
+        label='Caption [fi]'
+    )
+    caption_sv = forms.CharField(
+        required=True,
+        label='Caption [sv]'
+    )
     class Meta:
         model = ResourceImage
-        translated_fields = ['caption_fi', 'caption_en', 'caption_sv']
+        translated_fields = [ 'caption_fi', 'caption_en', 'caption_sv']
         fields = ['image', 'type'] + translated_fields
 
 
