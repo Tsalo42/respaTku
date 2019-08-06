@@ -1,4 +1,4 @@
-Django==2.1.11
+Django
 django-modeltranslation>=0.13-beta1
 --no-binary psycopg2
 psycopg2
